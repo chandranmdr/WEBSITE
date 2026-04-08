@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hip Resurfacing | Mr Shakir Hussain — Consultant Orthopaedic Surgeon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:#1a1a1a;background:#fafaf8;line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit;transition:color .3s}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.25}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.slabel{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#c5a44e;margin-bottom:12px}
+.stitle{font-size:clamp(1.8rem,4vw,2.6rem);color:#0c1f3f;margin-bottom:16px}
+.ssub{font-size:1.05rem;color:#5a5a5a;max-width:720px;line-height:1.75}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;transition:all .35s;cursor:pointer;border:none}
+.btn-p{background:#c5a44e;color:#fff}.btn-p:hover{background:#ddc175}
+.btn-o{background:transparent;color:#c5a44e;border:1.5px solid #c5a44e}.btn-o:hover{background:#c5a44e;color:#fff}
+.btn-l{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.25)}.btn-l:hover{background:rgba(255,255,255,.2)}
+.text-body{color:#5a5a5a;font-size:.95rem;line-height:1.85;margin-bottom:20px}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,1);backdrop-filter:blur(12px);border-bottom:1px solid #e2e0db}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:130px;max-width:1200px;margin:0 auto;padding:0 24px}
+.nav-brand img{height:120px;width:auto;margin-left:-12px}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:.88rem;font-weight:700;color:#5a5a5a}.nav-links a:hover{color:#0c1f3f}
+.nav-dropdown{position:relative}
+.dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e2e0db;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.1);min-width:220px;padding:8px 0;list-style:none;z-index:2000}
+.nav-dropdown:hover .dropdown-menu{display:block}
+.dropdown-menu li{padding:0}
+.dropdown-menu li a{display:block;padding:10px 20px;font-size:.85rem;font-weight:600;color:#333;white-space:nowrap}
+.dropdown-menu li a:hover{background:#f0efeb;color:#c5a44e}
+.nav-cta .btn{padding:10px 24px;font-size:.85rem}
+.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
+
+/* HERO */
+.page-hero{background:linear-gradient(135deg,#0c1f3f,#162d55,#1a3460);padding:170px 0 80px;position:relative;overflow:hidden}
+.page-hero .slabel{color:#c5a44e}
+.page-hero h1{font-size:clamp(2rem,5vw,3rem);color:#fff;margin-bottom:12px}
+.page-hero .hero-sub{font-size:1.1rem;color:#a0aec0;line-height:1.8;max-width:700px;margin-bottom:32px}
+.breadcrumb{font-size:.8rem;color:#a0aec0;margin-bottom:24px}
+.breadcrumb a{color:#c5a44e}.breadcrumb a:hover{text-decoration:underline}
+
+/* SECTIONS */
+.section{padding:80px 0}
+.section-alt{padding:80px 0;background:#f0efeb}
+.section-dark{padding:80px 0;background:linear-gradient(135deg,#0c1f3f,#162d55,#1a3460)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+
+/* CARDS */
+.info-card{background:#fff;border:1px solid #e2e0db;border-radius:10px;padding:32px 24px;transition:all .35s}
+.info-card:hover{transform:translateY(-4px);box-shadow:0 2px 20px rgba(12,31,63,.06)}
+.info-card h3{font-size:1.05rem;color:#0c1f3f;margin-bottom:10px}
+.info-card p{font-size:.85rem;color:#5a5a5a;line-height:1.65}
+.info-card .card-tag{display:inline-block;background:rgba(197,164,78,.12);color:#c5a44e;font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:14px}
+
+/* IMPLANT TABLE */
+.implant-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+.implant-card{background:#fff;border:1px solid #e2e0db;border-radius:10px;padding:28px 24px;text-align:center;position:relative;overflow:hidden}
+.implant-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#c5a44e}
+.implant-card h3{font-size:1rem;color:#0c1f3f;margin-bottom:6px}
+.implant-card .maker{font-size:.78rem;color:#c5a44e;font-weight:600;margin-bottom:12px}
+.implant-card p{font-size:.85rem;color:#5a5a5a;line-height:1.65}
+.implant-card .bearing{display:inline-block;background:#f0efeb;padding:4px 12px;border-radius:20px;font-size:.72rem;font-weight:700;color:#0c1f3f;margin-bottom:12px}
+
+/* ADVANTAGES */
+.adv-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:32px}
+.adv-item{display:flex;align-items:flex-start;gap:12px;font-size:.9rem;color:#333;line-height:1.65}
+.adv-item svg{flex-shrink:0;margin-top:3px;width:20px;height:20px;stroke:#c5a44e;fill:none;stroke-width:2.5}
+
+/* TIMELINE */
+.timeline{display:flex;gap:0;margin-top:32px;position:relative}
+.timeline::before{content:'';position:absolute;top:24px;left:0;right:0;height:2px;background:#e2e0db}
+.timeline-step{flex:1;text-align:center;position:relative}
+.timeline-dot{width:12px;height:12px;border-radius:50%;background:#c5a44e;margin:18px auto 16px;position:relative;z-index:1}
+.timeline-label{font-size:.72rem;font-weight:700;color:#c5a44e;text-transform:uppercase;letter-spacing:.08em}
+.timeline-desc{font-size:.82rem;color:#5a5a5a;margin-top:6px;padding:0 8px}
+
+/* TESTIMONIAL */
+.test-feature{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:40px;max-width:800px;margin:32px auto 0}
+.test-feature .test-stars{color:#c5a44e;font-size:1.2rem;margin-bottom:16px}
+.test-feature .test-text{font-size:1rem;color:#a0aec0;line-height:1.8;font-style:italic;margin-bottom:20px}
+.test-feature .test-author{font-size:.85rem;font-weight:600;color:#fff}
+.test-feature .test-src{font-size:.72rem;color:#a0aec0;margin-top:2px}
+.test-feature .test-tag{display:inline-block;background:rgba(255,255,255,.06);padding:4px 14px;border-radius:20px;font-size:.72rem;color:#c5a44e;font-weight:600;margin-bottom:14px}
+
+/* IMAGE PLACEHOLDER */
+.img-placeholder{width:100%;aspect-ratio:16/10;border-radius:10px;background:#f0efeb;border:1px solid #e2e0db;display:flex;align-items:center;justify-content:center;color:#999;font-size:.85rem;text-align:center;padding:24px}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+.faq-item{background:#fff;border:1px solid #e2e0db;border-radius:8px;overflow:hidden}
+.faq-item.active{border-color:#c5a44e}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;cursor:pointer;gap:16px;font-size:.95rem;font-weight:600;color:#0c1f3f}
+.faq-q:hover{color:#c5a44e}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.active .faq-a{max-height:500px}
+.faq-a-inner{padding:0 24px 20px;font-size:.9rem;color:#5a5a5a;line-height:1.75}
+
+/* PATIENT STORY */
+.story-card{background:#fff;border:1px solid #e2e0db;border-radius:10px;padding:32px;text-align:center;max-width:600px;margin:32px auto 0}
+.story-card p{font-size:.9rem;color:#5a5a5a;margin-bottom:20px}
+
+/* CTA */
+.cta{padding:80px 0;background:linear-gradient(135deg,#0c1f3f,#162d55,#1a3460);text-align:center}
+.cta h2{font-size:clamp(1.6rem,3.5vw,2.2rem);color:#fff;margin-bottom:16px}
+.cta p{color:#a0aec0;max-width:560px;margin:0 auto 32px;font-size:1rem;line-height:1.75}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+.footer{padding:40px 0 24px;background:#0c1f3f;border-top:1px solid rgba(255,255,255,.06)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;font-weight:600}
+.footer-brand span{display:block;font-family:'DM Sans',sans-serif;font-size:.72rem;color:#a0aec0;font-weight:400;margin-top:2px}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:.8rem;color:#a0aec0}.footer-links a:hover{color:#c5a44e}
+.footer-copy{font-size:.72rem;color:#a0aec0;text-align:center;margin-top:24px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.two-col{grid-template-columns:1fr}.implant-grid{grid-template-columns:1fr}.three-col{grid-template-columns:1fr}.adv-grid{grid-template-columns:1fr}}
+@media(max-width:768px){
+.nav-links{display:none;position:fixed;top:130px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px;gap:0;border-bottom:2px solid #e2e0db;box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:999}
+.nav-links.show{display:flex}
+.nav-links li{padding:12px 0;border-bottom:1px solid #f0efeb}
+.nav-links li:last-child{border-bottom:none}
+.nav-mobile{display:block;background:none;border:none;cursor:pointer;padding:8px}
+.nav-dropdown .dropdown-menu{position:static;box-shadow:none;border:none;padding:4px 0 0 16px;min-width:auto;display:none}
+.nav-dropdown.open .dropdown-menu{display:block}
+.adv-grid{grid-template-columns:1fr}
+.timeline{flex-direction:column;gap:16px}
+.timeline::before{display:none}
+.implant-grid{grid-template-columns:1fr}
+.three-col{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+<a href="index.html" class="nav-brand"><img src="data:image/jpeg;base64,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" alt="Mr Shakir Hussain"></a>
+<ul class="nav-links">
+<li><a href="index.html#about">About</a></li>
+<li><a href="index.html#conditions">Conditions</a></li>
+<li class="nav-dropdown"><a href="index.html#procedures">Procedures &#9662;</a>
+<ul class="dropdown-menu">
+<li><a href="hip-resurfacing.html">Hip Resurfacing</a></li>
+<li><a href="#">Hip Replacement</a></li>
+<li><a href="#">Knee Replacement</a></li>
+<li><a href="#">Robotic Surgery</a></li>
+<li><a href="#">Revision Surgery</a></li>
+</ul>
+</li>
+<li><a href="index.html#testimonials">Testimonials</a></li>
+<li><a href="index.html#faq">FAQs</a></li>
+<li><a href="index.html#pricing">Fees</a></li>
+<li class="nav-cta"><a href="index.html#contact" class="btn btn-p">Book Consultation</a></li>
+</ul>
+<button class="nav-mobile" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">
+<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#0c1f3f" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+</div></nav>
+
+<!-- HERO -->
+<section class="page-hero">
+<div class="container">
+<div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#procedures">Procedures</a> &nbsp;/&nbsp; Hip Resurfacing</div>
+<div class="slabel">Signature Procedure</div>
+<h1>Hip Resurfacing</h1>
+<p class="hero-sub">A bone-conserving alternative to total hip replacement for active patients — preserving your natural anatomy, enabling return to high-impact activities, and now available to both men and women with the latest ceramic-on-ceramic implant technology.</p>
+<div style="display:flex;gap:14px;flex-wrap:wrap">
+<a href="#contact" class="btn btn-p">Book a Consultation &rarr;</a>
+<a href="#how-it-works" class="btn btn-l">How It Works</a>
+</div>
+</div>
+</section>
+
+<!-- WHAT IS IT -->
+<section class="section" id="how-it-works">
+<div class="container">
+<div class="two-col">
+<div>
+<div class="slabel">Understanding the Procedure</div>
+<h2 class="stitle">What is Hip Resurfacing?</h2>
+<p class="text-body">Hip resurfacing is a surgical procedure that treats hip arthritis while preserving significantly more of your natural bone than a traditional total hip replacement. Instead of removing the entire femoral head (the ball of the hip joint), it is reshaped and capped with a smooth metal or ceramic covering. The damaged hip socket is also resurfaced with a matching shell.</p>
+<p class="text-body">Because the natural bone structure is preserved, the replacement closely matches the size and mechanics of your original hip. This results in a more stable joint with a lower risk of dislocation, and makes any future revision surgery — should it ever be needed — significantly easier.</p>
+<p class="text-body">Mr Hussain has performed <strong>over 200 hip resurfacing procedures</strong> with excellent outcomes, and is one of the highest-volume hip resurfacing surgeons in the UK as recognised by the National Consultant Information Programme (NCIP).</p>
+</div>
+<div>
+<div class="img-placeholder">Illustration or X-ray image<br>showing hip resurfacing vs total hip replacement</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ADVANTAGES -->
+<section class="section-alt">
+<div class="container">
+<div style="text-align:center"><div class="slabel">Why Choose Resurfacing</div><h2 class="stitle">Advantages Over Total Hip Replacement</h2></div>
+<div class="adv-grid">
+<div class="adv-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Bone preservation</strong> — the femoral head is reshaped, not removed, preserving your natural bone stock for the future</span></div>
+<div class="adv-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Lower dislocation risk</strong> — the larger ball size closely matches your natural anatomy, providing greater stability</span></div>
+<div class="adv-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Return to high-impact activities</strong> — running, skiing, tennis, and competitive sports are realistic goals</span></div>
+<div class="adv-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>More natural movement</strong> — patients frequently report the hip feels closer to their original joint</span></div>
+<div class="adv-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Easier future revision</strong> — if ever needed, conversion to a total hip replacement is more straightforward</span></div>
+<div class="adv-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Available to men and women</strong> — Mr Hussain uses ceramic-on-ceramic implants that eliminate metal ion concerns, making resurfacing suitable for female patients too</span></div>
+</div>
+</div>
+</section>
+
+<!-- IMPLANTS -->
+<section class="section">
+<div class="container">
+<div style="text-align:center"><div class="slabel">Implant Technology</div><h2 class="stitle">The Implants Mr Hussain Uses</h2>
+<p class="ssub" style="margin:0 auto">Mr Hussain selects the most appropriate implant for each patient based on their anatomy, bone quality, activity goals, and gender. He is one of few UK surgeons offering both metal-on-metal and ceramic-on-ceramic resurfacing options.</p></div>
+<div class="implant-grid">
+<div class="implant-card">
+<div class="bearing">Metal on Metal</div>
+<h3>Adept</h3>
+<div class="maker">by MatOrtho</div>
+<p>A proven metal-on-metal resurfacing system with excellent long-term results. Used primarily in male patients with adequate femoral head size. Well-established track record with robust clinical evidence.</p>
+</div>
+<div class="implant-card">
+<div class="bearing">Ceramic on Ceramic</div>
+<h3>ReCerf</h3>
+<div class="maker">by MatOrtho</div>
+<p>A ceramic-on-ceramic resurfacing implant suitable for both male and female patients. Eliminates metal ion concerns associated with traditional resurfacing. Uses hybrid fixation with cement in the femoral component.</p>
+</div>
+<div class="implant-card">
+<div class="bearing">Ceramic on Ceramic — Cementless</div>
+<h3>H1</h3>
+<div class="maker">by Zimmer</div>
+<p>The latest generation ceramic-on-ceramic resurfacing implant with totally cementless fixation. Suitable for both men and women. Represents the cutting edge of hip resurfacing technology.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GALLERY PLACEHOLDER -->
+<section class="section-alt">
+<div class="container">
+<div style="text-align:center"><div class="slabel">Clinical Gallery</div><h2 class="stitle">Surgical Images &amp; X-rays</h2></div>
+<div class="three-col" style="margin-top:32px">
+<div class="img-placeholder">Clinical image placeholder 1</div>
+<div class="img-placeholder">Clinical image placeholder 2</div>
+<div class="img-placeholder">Clinical image placeholder 3</div>
+</div>
+</div>
+</section>
+
+<!-- WHO IS SUITABLE -->
+<section class="section">
+<div class="container">
+<div class="two-col">
+<div>
+<div class="slabel">Am I a Candidate?</div>
+<h2 class="stitle">Who is Suitable for Hip Resurfacing?</h2>
+<p class="text-body">Hip resurfacing is best suited for active patients with hip arthritis who wish to preserve their natural bone and return to demanding physical activities. Mr Hussain will assess your suitability based on your imaging, bone quality, femoral head size, and activity goals during your consultation.</p>
+<p class="text-body"><strong>Ideal candidates typically include:</strong></p>
+<div class="adv-grid" style="grid-template-columns:1fr">
+<div class="adv-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Active patients with osteoarthritis, avascular necrosis, or inflammatory arthritis</span></div>
+<div class="adv-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Good bone density and adequate femoral head size</span></div>
+<div class="adv-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Patients wishing to return to high-impact sport or physically demanding work</span></div>
+<div class="adv-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Male patients</strong> — suitable for metal-on-metal (Adept) or ceramic-on-ceramic (ReCerf / H1) implants</span></div>
+<div class="adv-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Female patients</strong> — suitable with ceramic-on-ceramic implants (ReCerf or H1), which avoid the metal ion concerns that traditionally excluded women from resurfacing</span></div>
+</div>
+</div>
+<div>
+<img src="data:image/jpeg;base64,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" alt="Mr Hussain with a patient" style="width:100%;border-radius:10px;">
+</div>
+</div>
+</div>
+</section>
+
+<!-- DAY CASE -->
+<section class="section-alt">
+<div class="container">
+<div style="text-align:center;max-width:800px;margin:0 auto">
+<div class="slabel">Same-Day Discharge</div>
+<h2 class="stitle">Day-Case Hip Resurfacing</h2>
+<p class="text-body" style="text-align:center">Mr Hussain was the first surgeon at the Royal Orthopaedic Hospital to perform day-case hip and knee arthroplasty. For suitable patients, hip resurfacing can be performed as a day-case procedure — meaning you go home the same day as your surgery.</p>
+<p class="text-body" style="text-align:center">Suitability for day-case discharge depends on the timing of your surgery, your overall medical fitness, and the distance between your home and the hospital. Mr Hussain will discuss this option with you during your consultation.</p>
+</div>
+</div>
+</section>
+
+<!-- RECOVERY TIMELINE -->
+<section class="section">
+<div class="container">
+<div style="text-align:center"><div class="slabel">Getting Back to Life</div><h2 class="stitle">Recovery Timeline</h2>
+<p class="ssub" style="margin:0 auto">Every patient is different, but here is a typical recovery journey following hip resurfacing surgery.</p></div>
+<div class="timeline">
+<div class="timeline-step"><div class="timeline-dot"></div><div class="timeline-label">Day 1</div><div class="timeline-desc">Up and walking with crutches. Many patients go home same day or next day.</div></div>
+<div class="timeline-step"><div class="timeline-dot"></div><div class="timeline-label">2 Weeks</div><div class="timeline-desc">Wound check and clip/stitch removal. Gradually increasing activity.</div></div>
+<div class="timeline-step"><div class="timeline-dot"></div><div class="timeline-label">6 Weeks</div><div class="timeline-desc">Follow-up clinic appointment. Most patients off crutches and driving.</div></div>
+<div class="timeline-step"><div class="timeline-dot"></div><div class="timeline-label">3 Months</div><div class="timeline-desc">Return to low-impact sport — cycling, swimming, gym work.</div></div>
+<div class="timeline-step"><div class="timeline-dot"></div><div class="timeline-label">6 Months</div><div class="timeline-desc">Return to high-impact activities — running, skiing, tennis, competitive sport.</div></div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="section-dark" id="testimonial">
+<div class="container">
+<div style="text-align:center"><div class="slabel" style="color:#c5a44e">Patient Experience</div><h2 class="stitle" style="color:#fff">What Patients Say</h2></div>
+<div class="test-feature">
+<div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<div class="test-tag">Hip Resurfacing</div>
+<p class="test-text">"As a highly experienced orthopaedic consultant myself, I can confidently reassure anyone under his care. He performed a hip resurfacing on me four months ago and I was back operating on my own patients. He has a lovely demeanour and instils confidence with those he consults with. A treasure to his hospital."</p>
+<div class="test-author">Verified Patient — Orthopaedic Consultant</div>
+<div class="test-src">via Doctify</div>
+</div>
+</div>
+</section>
+
+<!-- PATIENT STORIES -->
+<section class="section-alt" id="patient-stories">
+<div class="container">
+<div style="text-align:center;max-width:760px;margin:0 auto 48px">
+  <div class="slabel">Real Results</div>
+  <h2 class="stitle">Patient Stories</h2>
+  <p class="ssub" style="margin:0 auto">Every patient's journey is different. These are real accounts from people who chose hip resurfacing with Mr Hussain — in their own words.</p>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start">
+
+  <!-- STORY 1: DAN -->
+  <div style="background:#fff;border:1px solid #e2e0db;border-radius:12px;overflow:hidden;transition:box-shadow .3s">
+    <div style="background:linear-gradient(135deg,#0c1f3f,#162d55);padding:28px 32px 24px">
+      <div style="display:inline-block;background:rgba(197,164,78,.2);color:#c5a44e;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:16px">Hip Resurfacing · Age 43</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:#fff;margin-bottom:0;line-height:1.3">Dan's Story</h3>
+      <p style="font-size:.82rem;color:#a0aec0;margin-top:6px">The Woodlands Suite, Royal Orthopaedic Hospital</p>
+    </div>
+    <div style="padding:28px 32px 32px">
+      <p style="font-size:1.05rem;color:#0c1f3f;font-style:italic;font-family:'Playfair Display',serif;line-height:1.6;margin-bottom:20px;border-left:3px solid #c5a44e;padding-left:16px">"The payoff is so awesome compared to the pain you had before."</p>
+      <p style="font-size:.9rem;color:#5a5a5a;line-height:1.8;margin-bottom:24px">Dan, 43, spent over two years living with severe osteoarthritis that was threatening his career and daily life. Unable to sleep, struggling with basic movement, and facing ill-health retirement, he came to Mr Hussain at The Woodlands Suite. Following hip resurfacing surgery, Dan was walking without crutches at seven weeks and described the change in his underlying pain as "honestly life-changing."</p>
+      <a href="https://rohprivatecare.co.uk/news-and-stories/patient-stories/life-changing-surgery-dans-hip-resurfacing-at-the-woodlands-suite" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:.88rem;font-weight:700;color:#c5a44e;text-decoration:none;border-bottom:1.5px solid rgba(197,164,78,.3);padding-bottom:2px;transition:border-color .3s">Read Dan's full story &rarr;</a>
+    </div>
+  </div>
+
+  <!-- STORY 2: SPARTYKUS -->
+  <div style="background:#fff;border:1px solid #e2e0db;border-radius:12px;overflow:hidden;transition:box-shadow .3s">
+    <div style="background:linear-gradient(135deg,#0c1f3f,#162d55);padding:28px 32px 24px">
+      <div style="display:inline-block;background:rgba(197,164,78,.2);color:#c5a44e;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:16px">Hip Resurfacing · Age 53</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:#fff;margin-bottom:0;line-height:1.3">Spartykus's Story</h3>
+      <p style="font-size:.82rem;color:#a0aec0;margin-top:6px">Royal Orthopaedic Hospital, Birmingham</p>
+    </div>
+    <div style="padding:28px 32px 32px">
+      <p style="font-size:1.05rem;color:#0c1f3f;font-style:italic;font-family:'Playfair Display',serif;line-height:1.6;margin-bottom:20px;border-left:3px solid #c5a44e;padding-left:16px">"I feel like I have an 18 year old hip again."</p>
+      <p style="font-size:.9rem;color:#5a5a5a;line-height:1.8;margin-bottom:24px">A lifelong runner and fell racer, Spartykus had his left hip resurfaced by Mr Hussain at 53, after years of progressive osteoarthritis forced him to stop racing entirely. One year on, he kept pace with his 78-year-old father on a 20-mile bike ride — and credits his remarkable recovery to excellent bone stock, careful patient selection, and the skill of his surgical team.</p>
+      <a href="https://surfacehippy.info/spartykuss-hip-resurfacing-with-mr-shakir-hussain-2022/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:.88rem;font-weight:700;color:#c5a44e;text-decoration:none;border-bottom:1.5px solid rgba(197,164,78,.3);padding-bottom:2px;transition:border-color .3s">Read Spartykus's full story &rarr;</a>
+    </div>
+  </div>
+
+</div>
+</div>
+</section>
+
+<style>
+@media(max-width:768px){
+  #patient-stories .container > div:last-child{grid-template-columns:1fr!important}
+}
+</style>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+<div class="container">
+<div style="text-align:center"><div class="slabel">Common Questions</div><h2 class="stitle">Hip Resurfacing FAQs</h2></div>
+<div class="faq-list" style="max-width:800px;margin:32px auto 0">
+<div class="faq-item active"><div class="faq-q" onclick="this.parentElement.classList.toggle('active')">How long does a hip resurfacing last? <span>+</span></div><div class="faq-a"><div class="faq-a-inner">Over 90% of hip resurfacings in suitable patients are still working well after 10 years. The Birmingham Hip Resurfacing system has an ODEP 13A* rating, meaning there is better than a 94% chance it will not need revision within 13 years. With careful patient selection and modern implant technology, many resurfacings are expected to last 20 years or more.</div></div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('active')">Can women have hip resurfacing? <span>+</span></div><div class="faq-a"><div class="faq-a-inner">Yes. Traditionally, metal-on-metal resurfacing was recommended mainly for men due to higher complication rates in women related to metal ion release. However, Mr Hussain uses ceramic-on-ceramic implants (ReCerf by MatOrtho and the H1 by Zimmer) that eliminate metal ion concerns entirely, making hip resurfacing a viable option for suitable female patients.</div></div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('active')">What sports can I return to after hip resurfacing? <span>+</span></div><div class="faq-a"><div class="faq-a-inner">One of the key advantages of hip resurfacing over total hip replacement is the ability to return to high-impact and competitive sports. Patients commonly return to running, skiing, tennis, cycling, swimming, gym training, football, and other demanding activities. Mr Hussain will discuss your specific sporting goals during your consultation.</div></div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('active')">What is the difference between metal-on-metal and ceramic-on-ceramic resurfacing? <span>+</span></div><div class="faq-a"><div class="faq-a-inner">Metal-on-metal resurfacing (such as the Adept by MatOrtho) uses cobalt-chrome bearing surfaces and has an excellent long-term track record in male patients. Ceramic-on-ceramic resurfacing (ReCerf and H1) uses ceramic bearing surfaces instead, eliminating the release of metal ions. This makes ceramic implants suitable for both men and women and removes the need for long-term metal ion monitoring.</div></div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('active')">Can I go home the same day? <span>+</span></div><div class="faq-a"><div class="faq-a-inner">Yes, for suitable patients hip resurfacing can be performed as a day-case procedure. Whether same-day discharge is appropriate depends on the timing of your surgery, your overall health, and the distance between your home and the hospital. Mr Hussain was the first surgeon at ROH to offer day-case arthroplasty and will discuss this option with you.</div></div></div>
+<div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('active')">How does hip resurfacing compare to robotic hip replacement? <span>+</span></div><div class="faq-a"><div class="faq-a-inner">These are different procedures suited to different patients. Hip resurfacing preserves your natural bone and is ideal for younger, active patients wanting to return to sport. Robotic total hip replacement uses CT-guided technology for precise implant positioning and is suitable for a wider range of patients. Mr Hussain is experienced in both and will recommend the best option based on your individual circumstances.</div></div></div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+<div class="container">
+<h2>Considering Hip Resurfacing?</h2>
+<p>Book a specialist consultation with Mr Hussain to discuss whether hip resurfacing is the right option for you.</p>
+<div class="cta-btns">
+<a href="tel:00447772782462" class="btn btn-p">&#128222; Call: 0044 7772 782462</a>
+<a href="/cdn-cgi/l/email-protection#2f5c474e44465d475a5c5c4e46416f41475c01414a5b" class="btn btn-l">&#9993; Email: <span class="__cf_email__" data-cfemail="3d4e555c56544f55484e4e5c54537d53554e13535849">[email&#160;protected]</span></a>
+<a href="https://wa.me/447772782462" class="btn btn-l">&#128172; WhatsApp</a>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="container">
+<div class="footer-inner">
+<div class="footer-brand">Mr Shakir Hussain<span>MBBS &middot; MRCS &middot; FRCSEd (Tr &amp; Orth) &middot; Consultant Orthopaedic Surgeon</span></div>
+<div class="footer-links">
+<a href="https://www.doctify.com/uk/specialist/shakir-hussain#reviews" target="_blank">Doctify</a>
+<a href="https://roh.nhs.uk/our-team/hip/shakir-hussain" target="_blank">ROH</a>
+<a href="https://www.linkedin.com/in/shakir-hussain-2a9646a9/" target="_blank">LinkedIn</a>
+<a href="https://surfacehippy.info/spartykuss-hip-resurfacing-with-mr-shakir-hussain-2022/" target="_blank">SurfaceHippy</a>
+</div></div>
+<div class="footer-copy">&copy; 2026 Mr Shakir Hussain. All Rights Reserved. &nbsp;|&nbsp; ICO Registration: ZB562385 &nbsp;|&nbsp; GMC Registered</div>
+</div></footer>
+
+<script data-cfasync="false" src="/c

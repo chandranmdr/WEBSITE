@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revision Joint Replacement | Mr Shakir Hussain — Consultant Orthopaedic Surgeon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',sans-serif;color:#1a1a1a;background:#fafaf8;line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit;transition:color .3s}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.25}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(250,250,248,.92);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:all .4s}
+.nav.scrolled{border-bottom:1px solid #e2e0db;box-shadow:0 2px 20px rgba(12,31,63,.06)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1200px;margin:0 auto}
+.nav-brand{display:flex;align-items:center}
+.nav-brand img{height:52px;width:auto;object-fit:contain}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{font-size:.88rem;font-weight:700;color:#5a5a5a}
+.nav-links a:hover{color:#0c1f3f}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;background:#0c1f3f;color:#fff;padding:10px 22px;border-radius:6px;font-size:.85rem;font-weight:600;transition:all .3s}
+.nav-cta:hover{background:#c5a44e;color:#0c1f3f}
+.nav-dropdown{position:relative}
+.dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid #e2e0db;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.1);min-width:220px;padding:8px 0;list-style:none;z-index:2000}
+.nav-dropdown:hover .dropdown-menu{display:block}
+.dropdown-menu li{padding:0}
+.dropdown-menu li a{display:block;padding:10px 20px;font-size:.85rem;font-weight:600;color:#333;white-space:nowrap}
+.dropdown-menu li a:hover{background:#f0efeb;color:#c5a44e}
+.mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.mobile-toggle span{display:block;width:24px;height:2px;background:#0c1f3f;margin:5px 0;transition:.3s}
+
+/* ── SECTION UTILITY ── */
+.slabel{font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#c5a44e;margin-bottom:12px}
+.stitle{font-size:clamp(1.8rem,4vw,2.6rem);color:#0c1f3f;margin-bottom:16px}
+.ssub{font-size:1.05rem;color:#5a5a5a;max-width:720px;line-height:1.75}
+section{padding:80px 0}
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#0c1f3f 0%,#162d55 50%,#1a3460 100%);padding:140px 0 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(197,164,78,.08) 0%,transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-20%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(197,164,78,.05) 0%,transparent 70%);border-radius:50%}
+.hero .container{position:relative;z-index:1}
+.hero-breadcrumb{font-size:.8rem;color:rgba(240,239,235,.5);margin-bottom:24px}
+.hero-breadcrumb a{color:rgba(240,239,235,.5);transition:color .3s}
+.hero-breadcrumb a:hover{color:#c5a44e}
+.hero-breadcrumb span{color:#c5a44e}
+.hero h1{font-size:clamp(2.2rem,5vw,3.4rem);color:#f0efeb;margin-bottom:20px;max-width:700px}
+.hero h1 em{font-style:normal;color:#c5a44e}
+.hero-sub{font-size:1.15rem;color:rgba(240,239,235,.7);max-width:640px;line-height:1.8;margin-bottom:32px}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;margin-bottom:36px}
+.hero-stat{display:flex;flex-direction:column}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#c5a44e}
+.hero-stat-label{font-size:.78rem;color:rgba(240,239,235,.5);letter-spacing:.06em}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;background:#c5a44e;color:#0c1f3f;padding:14px 32px;border-radius:6px;font-weight:700;font-size:.95rem;transition:all .3s}
+.hero-cta:hover{background:#ddc175;transform:translateY(-2px);box-shadow:0 8px 24px rgba(197,164,78,.3)}
+
+/* ── WHAT IS REVISION ── */
+.what-section{background:#fff;border-bottom:1px solid #e2e0db}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:40px}
+.what-text p{color:#5a5a5a;margin-bottom:16px;line-height:1.8}
+.what-text p strong{color:#0c1f3f}
+.what-visual{background:#f0efeb;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:20px}
+.what-card{display:flex;align-items:flex-start;gap:16px;padding:16px;background:#fff;border-radius:10px;border:1px solid #e2e0db;transition:all .3s}
+.what-card:hover{border-color:#c5a44e;box-shadow:0 4px 16px rgba(197,164,78,.1)}
+.what-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem}
+.what-icon.hip{background:rgba(197,164,78,.12);color:#c5a44e}
+.what-icon.knee{background:rgba(12,31,63,.08);color:#0c1f3f}
+.what-card h4{font-size:.95rem;color:#0c1f3f;margin-bottom:4px}
+.what-card p{font-size:.82rem;color:#5a5a5a;line-height:1.6}
+
+/* ── WHY REVISION NEEDED ── */
+.reasons-section{background:#fafaf8}
+.reasons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.reason-card{background:#fff;border-radius:14px;padding:32px;border:1px solid #e2e0db;transition:all .4s;position:relative;overflow:hidden}
+.reason-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#c5a44e;transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.reason-card:hover::before{transform:scaleX(1)}
+.reason-card:hover{border-color:#c5a44e;box-shadow:0 8px 32px rgba(12,31,63,.08)}
+.reason-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:rgba(197,164,78,.2);margin-bottom:12px}
+.reason-card h3{font-size:1.1rem;color:#0c1f3f;margin-bottom:10px}
+.reason-card p{font-size:.9rem;color:#5a5a5a;line-height:1.7}
+
+/* ── EXPERTISE ── */
+.expertise-section{background:linear-gradient(135deg,#0c1f3f 0%,#162d55 100%);color:#f0efeb}
+.expertise-section .stitle{color:#f0efeb}
+.expertise-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:40px;align-items:start}
+.expertise-left p{color:rgba(240,239,235,.7);line-height:1.8;margin-bottom:16px;font-size:1rem}
+.expertise-left p strong{color:#c5a44e}
+.expertise-credentials{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+.exp-cred{display:flex;gap:16px;align-items:flex-start;padding:20px;background:rgba(255,255,255,.06);border-radius:12px;border:1px solid rgba(255,255,255,.08);transition:all .3s}
+.exp-cred:hover{background:rgba(255,255,255,.1);border-color:rgba(197,164,78,.3)}
+.exp-cred-icon{width:40px;height:40px;border-radius:10px;background:rgba(197,164,78,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+.exp-cred h4{font-size:.95rem;color:#f0efeb;margin-bottom:4px}
+.exp-cred p{font-size:.82rem;color:rgba(240,239,235,.5);line-height:1.6}
+.expertise-right{display:flex;flex-direction:column;gap:20px}
+.exp-stat-card{padding:28px;background:rgba(255,255,255,.05);border-radius:14px;border:1px solid rgba(255,255,255,.08);text-align:center}
+.exp-stat-card .num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:#c5a44e}
+.exp-stat-card .label{font-size:.82rem;color:rgba(240,239,235,.5);margin-top:4px;letter-spacing:.04em}
+.exp-highlight{padding:28px;background:rgba(197,164,78,.1);border-radius:14px;border:1px solid rgba(197,164,78,.2)}
+.exp-highlight h3{font-size:1.1rem;color:#c5a44e;margin-bottom:8px}
+.exp-highlight p{font-size:.9rem;color:rgba(240,239,235,.7);line-height:1.7}
+
+/* ── TYPES OF REVISION ── */
+.types-section{background:#fff;border-bottom:1px solid #e2e0db}
+.types-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:40px}
+.type-card{background:#fafaf8;border-radius:14px;padding:36px;border:1px solid #e2e0db;transition:all .4s;position:relative}
+.type-card:hover{border-color:#c5a44e;box-shadow:0 8px 32px rgba(12,31,63,.06)}
+.type-badge{display:inline-block;padding:4px 14px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+.type-badge.complex{background:rgba(197,164,78,.12);color:#c5a44e}
+.type-badge.infection{background:rgba(180,60,60,.08);color:#b43c3c}
+.type-badge.fracture{background:rgba(12,31,63,.08);color:#0c1f3f}
+.type-badge.reconstruction{background:rgba(60,120,80,.08);color:#3c7850}
+.type-card h3{font-size:1.2rem;color:#0c1f3f;margin-bottom:12px}
+.type-card p{font-size:.9rem;color:#5a5a5a;line-height:1.75;margin-bottom:12px}
+.type-features{list-style:none;display:flex;flex-direction:column;gap:8px}
+.type-features li{display:flex;align-items:flex-start;gap:10px;font-size:.85rem;color:#5a5a5a}
+.type-features li::before{content:'✓';color:#c5a44e;font-weight:700;flex-shrink:0;margin-top:2px}
+
+/* ── JOURNEY ── */
+.journey-section{background:#fafaf8}
+.journey-timeline{display:flex;flex-direction:column;gap:0;margin-top:40px;position:relative}
+.journey-timeline::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#c5a44e,#0c1f3f)}
+.journey-step{display:flex;gap:32px;padding:28px 0;position:relative}
+.journey-dot{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;z-index:1}
+.journey-dot.step1{background:linear-gradient(135deg,#c5a44e,#ddc175);color:#0c1f3f}
+.journey-dot.step2{background:linear-gradient(135deg,#0c1f3f,#1a3460);color:#c5a44e}
+.journey-dot.step3{background:linear-gradient(135deg,#c5a44e,#ddc175);color:#0c1f3f}
+.journey-dot.step4{background:linear-gradient(135deg,#0c1f3f,#1a3460);color:#c5a44e}
+.journey-dot.step5{background:linear-gradient(135deg,#c5a44e,#ddc175);color:#0c1f3f}
+.journey-content{flex:1;padding-bottom:20px}
+.journey-content h3{font-size:1.15rem;color:#0c1f3f;margin-bottom:8px}
+.journey-content p{font-size:.92rem;color:#5a5a5a;line-height:1.8}
+
+/* ── RECOVERY TIMELINE ── */
+.recovery-section{background:#fff;border-bottom:1px solid #e2e0db}
+.recovery-track{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px}
+.recovery-node{text-align:center;position:relative}
+.recovery-node::after{content:'';position:absolute;top:28px;left:60%;right:-40%;height:2px;background:#e2e0db}
+.recovery-node:last-child::after{display:none}
+.recovery-circle{width:56px;height:56px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;position:relative;z-index:1}
+.recovery-circle.wk0{background:#c5a44e;color:#0c1f3f}
+.recovery-circle.wk2{background:rgba(197,164,78,.2);color:#0c1f3f}
+.recovery-circle.wk6{background:rgba(12,31,63,.1);color:#0c1f3f}
+.recovery-circle.wk12{background:rgba(12,31,63,.15);color:#0c1f3f}
+.recovery-circle.wk24{background:#0c1f3f;color:#c5a44e}
+.recovery-node h4{font-size:.85rem;color:#0c1f3f;margin-bottom:6px}
+.recovery-node p{font-size:.78rem;color:#5a5a5a;line-height:1.5}
+
+/* ── PATIENT STORY PLACEHOLDER ── */
+.patient-story{background:#f0efeb;border-bottom:1px solid #e2e0db}
+.story-card{background:#fff;border-radius:16px;padding:48px;border:1px solid #e2e0db;display:flex;align-items:center;gap:48px;margin-top:32px}
+.story-placeholder{width:300px;height:220px;border-radius:12px;background:linear-gradient(135deg,rgba(12,31,63,.06),rgba(197,164,78,.08));display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;border:2px dashed #e2e0db}
+.story-placeholder-icon{font-size:2.4rem;margin-bottom:12px;opacity:.4}
+.story-placeholder-text{font-size:.82rem;color:#5a5a5a;text-align:center}
+.story-content h3{font-size:1.3rem;color:#0c1f3f;margin-bottom:12px}
+.story-content p{font-size:.95rem;color:#5a5a5a;line-height:1.8;margin-bottom:16px}
+.story-link{display:inline-flex;align-items:center;gap:8px;color:#c5a44e;font-weight:600;font-size:.9rem}
+.story-link:hover{color:#0c1f3f}
+
+/* ── TESTIMONIAL ── */
+.testimonial-section{background:linear-gradient(135deg,#0c1f3f 0%,#162d55 100%)}
+.test-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:48px;max-width:800px;margin:40px auto 0}
+.test-stars{color:#c5a44e;font-size:1.3rem;letter-spacing:4px;margin-bottom:16px}
+.test-tag{display:inline-block;padding:4px 14px;background:rgba(197,164,78,.15);color:#c5a44e;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+.test-text{font-family:'Playfair Display',serif;font-size:1.2rem;color:#f0efeb;line-height:1.7;font-style:italic;margin-bottom:20px}
+.test-author{font-size:.9rem;color:rgba(240,239,235,.7);font-weight:600}
+.test-src{font-size:.78rem;color:rgba(240,239,235,.4);margin-top:4px}
+
+/* ── MDT / HDU ── */
+.mdt-section{background:#fafaf8}
+.mdt-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px}
+.mdt-card{background:#fff;border-radius:14px;padding:36px;border:1px solid #e2e0db;transition:all .3s}
+.mdt-card:hover{border-color:#c5a44e;box-shadow:0 4px 20px rgba(12,31,63,.06)}
+.mdt-card-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:20px}
+.mdt-card-icon.mdt{background:rgba(12,31,63,.08);color:#0c1f3f}
+.mdt-card-icon.hdu{background:rgba(197,164,78,.12);color:#c5a44e}
+.mdt-card h3{font-size:1.15rem;color:#0c1f3f;margin-bottom:10px}
+.mdt-card p{font-size:.92rem;color:#5a5a5a;line-height:1.75}
+
+/* ── FAQ ── */
+.faq-section{background:#fff}
+.faq-list{max-width:800px;margin:40px auto 0;display:flex;flex-direction:column;gap:12px}
+.faq-item{border:1px solid #e2e0db;border-radius:10px;overflow:hidden;transition:all .3s}
+.faq-item:hover{border-color:rgba(197,164,78,.4)}
+.faq-item.active{border-color:#c5a44e;box-shadow:0 4px 16px rgba(197,164,78,.08)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;font-weight:600;color:#0c1f3f;font-size:.95rem;background:#fff;transition:background .3s}
+.faq-q:hover{background:#fafaf8}
+.faq-q .arrow{transition:transform .3s;font-size:.8rem;color:#c5a44e}
+.faq-item.active .faq-q .arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-item.active .faq-a{max-height:400px}
+.faq-a-inner{padding:0 24px 20px;color:#5a5a5a;font-size:.9rem;line-height:1.8}
+
+/* ── CTA ── */
+.cta-section{background:linear-gradient(135deg,#0c1f3f 0%,#1a3460 100%);padding:80px 0;text-align:center}
+.cta-section .slabel{color:#c5a44e}
+.cta-section .stitle{color:#f0efeb}
+.cta-section .ssub{color:rgba(240,239,235,.6);margin:0 auto 32px}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:6px;font-weight:700;font-size:.95rem;transition:all .3s}
+.cta-btn.primary{background:#c5a44e;color:#0c1f3f}
+.cta-btn.primary:hover{background:#ddc175;transform:translateY(-2px);box-shadow:0 8px 24px rgba(197,164,78,.3)}
+.cta-btn.secondary{background:transparent;color:#f0efeb;border:2px solid rgba(240,239,235,.2)}
+.cta-btn.secondary:hover{border-color:#c5a44e;color:#c5a44e}
+.cta-contact{display:flex;gap:40px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+.cta-contact a{display:flex;align-items:center;gap:8px;color:rgba(240,239,235,.6);font-size:.88rem;transition:color .3s}
+.cta-contact a:hover{color:#c5a44e}
+
+/* ── FOOTER ── */
+footer{background:#0a1830;padding:32px 0;text-align:center;border-top:1px solid rgba(255,255,255,.06)}
+footer p{font-size:.78rem;color:rgba(240,239,235,.3)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+.types-grid{grid-template-columns:1fr}
+.what-grid,.expertise-grid,.mdt-grid{grid-template-columns:1fr}
+.story-card{flex-direction:column}
+.story-placeholder{width:100%;height:180px}
+}
+@media(max-width:768px){
+.nav-links{display:none}
+.mobile-toggle{display:block}
+.hero{padding:120px 0 60px}
+.hero h1{font-size:clamp(1.8rem,6vw,2.4rem)}
+.hero-stats{gap:24px}
+.reasons-grid{grid-template-columns:1fr}
+.recovery-track{grid-template-columns:repeat(3,1fr)}
+.recovery-node::after{display:none}
+.cta-buttons{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="nav" id="nav">
+<div class="nav-inner">
+  <a href="landing-page.html" class="nav-brand">
+    <img src="data:image/jpeg;base64,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" alt="Mr Shakir Hussain — Specialist Lower Limb Arthroplasty and Robotic Surgery">
+  </a>
+  <ul class="nav-links">
+    <li><a href="landing-page.html">Home</a></li>
+    <li><a href="landing-page.html#about">About</a></li>
+    <li class="nav-dropdown"><a href="landing-page.html#procedures">Procedures &#9662;</a>
+      <ul class="dropdown-menu">
+        <li><a href="hip-resurfacing.html">Hip Resurfacing</a></li>
+        <li><a href="#">Hip Replacement</a></li>
+        <li><a href="#">Knee Replacement</a></li>
+        <li><a href="#">Robotic Surgery</a></li>
+        <li><a href="revision-surgery.html" style="color:#c5a44e">Revision Surgery</a></li>
+      </ul>
+    </li>
+    <li><a href="landing-page.html#testimonials">Testimonials</a></li>
+    <li><a href="landing-page.html#contact">Contact</a></li>
+    <li><a href="#book" class="nav-cta">Book Consultation</a></li>
+  </ul>
+  <button class="mobile-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+<div class="container">
+  <div class="hero-breadcrumb">
+    <a href="landing-page.html">Home</a> &nbsp;/&nbsp; <a href="landing-page.html#procedures">Procedures</a> &nbsp;/&nbsp; <span>Revision Surgery</span>
+  </div>
+  <h1>Complex Revision <em>Joint Replacement</em></h1>
+  <p class="hero-sub">Specialist management of failed, worn, loose, or infected hip and knee replacements — including peri-prosthetic fractures, severe bone loss, and complex reconstruction using the latest implant technology.</p>
+  <a href="#book" class="hero-cta">Book a Revision Consultation →</a>
+</div>
+</section>
+
+<!-- ═══════════════ WHAT IS REVISION SURGERY ═══════════════ -->
+<section class="what-section fade-in">
+<div class="container">
+  <div class="slabel">Understanding Revision Surgery</div>
+  <h2 class="stitle">What Is Revision Joint Replacement?</h2>
+  <div class="what-grid">
+    <div class="what-text">
+      <p>Revision joint replacement is a <strong>specialist surgical procedure</strong> to remove a hip or knee replacement that has failed, worn out, or developed complications — and replace it with new implant components.</p>
+      <p>Unlike a first-time (primary) joint replacement, revision surgery is <strong>more complex and technically demanding</strong>. It often involves dealing with bone loss, scar tissue from previous surgery, damaged soft tissues, and the need for specialised implants.</p>
+      <p>Revision surgery requires a surgeon with <strong>extensive experience in complex reconstruction</strong>, access to a wide range of implant options — including mega-prostheses and custom-made components — and a multidisciplinary team approach to achieve the best possible outcome.</p>
+      <p>Mr Hussain regularly performs complex revision procedures at the <strong>Royal Orthopaedic Hospital</strong>, one of the UK's leading specialist orthopaedic centres, with full access to high-dependency care facilities for patients who need additional post-operative monitoring.</p>
+    </div>
+    <div class="what-visual">
+      <div class="what-card">
+        <div class="what-icon hip">🦴</div>
+        <div>
+          <h4>Hip Revision</h4>
+          <p>Replacement of failed acetabular (socket) and/or femoral (stem) components, addressing bone deficiency and restoring stability.</p>
+        </div>
+      </div>
+      <div class="what-card">
+        <div class="what-icon knee">🦵</div>
+        <div>
+          <h4>Knee Revision</h4>
+          <p>Removal and replacement of tibial, femoral, and patellar components, often with augments, cones, or sleeves to address bone loss.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════ WHY MIGHT YOU NEED REVISION ═══════════════ -->
+<section class="reasons-section fade-in">
+<div class="container">
+  <div class="slabel">Common Indications</div>
+  <h2 class="stitle">Why Might You Need Revision Surgery?</h2>
+  <p class="ssub">There are several reasons why an original hip or knee replacement may fail over time, leading to pain, instability, or reduced function.</p>
+  <div class="reasons-grid">
+    <div class="reason-card">
+      <div class="reason-num">01</div>
+      <h3>Implant Loosening</h3>
+      <p>Over time, the bond between the implant and bone can weaken due to wear debris, inadequate initial fixation, or bone loss. This causes pain and instability, particularly during weight-bearing activities.</p>
+    </div>
+    <div class="reason-card">
+      <div class="reason-num">02</div>
+      <h3>Prosthetic Joint Infection</h3>
+      <p>Infection around a joint replacement is a serious complication that may require a staged approach — first removing the infected implant, treating the infection with antibiotics, then implanting new components once the infection is eradicated.</p>
+    </div>
+    <div class="reason-card">
+      <div class="reason-num">03</div>
+      <h3>Peri-Prosthetic Fracture</h3>
+      <p>A fracture around the implant, often from a fall or trauma, may require revision surgery to stabilise the bone and replace damaged components. These fractures are increasingly common as the population ages.</p>
+    </div>
+    <div class="reason-card">
+      <div class="reason-num">04</div>
+      <h3>Implant Wear &amp; Bearing Failure</h3>
+      <p>The bearing surfaces of any joint replacement will wear over time. This wear can generate particles that cause bone loss (osteolysis) and may eventually lead to component failure requiring replacement.</p>
+    </div>
+    <div class="reason-card">
+      <div class="reason-num">05</div>
+      <h3>Instability &amp; Dislocation</h3>
+      <p>Repeated dislocation or persistent instability following a hip or knee replacement may indicate that the components are not optimally positioned, or that soft tissue support is insufficient, necessitating revision.</p>
+    </div>
+    <div class="reason-card">
+      <div class="reason-num">06</div>
+      <h3>Adverse Reaction to Implant</h3>
+      <p>Some patients develop reactions to metal debris (metallosis) or other implant materials, causing pain, swelling, and soft tissue damage. This is particularly seen with certain metal-on-metal bearing surfaces.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════ MR HUSSAIN'S EXPERTISE ═══════════════ -->
+<section class="expertise-section fade-in">
+<div class="container">
+  <div class="slabel">Specialist Experience</div>
+  <h2 class="stitle">Mr Hussain's Revision Expertise</h2>
+  <div class="expertise-grid">
+    <div class="expertise-left">
+      <p>Mr Hussain has <strong>extensive experience in complex revision hip and knee surgery</strong>, managing some of the most challenging cases referred from across the region. His practice encompasses the full spectrum of revision arthroplasty, from straightforward single-component exchanges to highly complex reconstructions involving severe bone loss.</p>
+      <p>He regularly uses <strong>mega-prostheses, segmental femoral replacements, and custom-made implants</strong> for patients with massive bone deficiency, and has a <strong>special interest in the management of prosthetic joint infection (PJI)</strong> — one of the most demanding areas in orthopaedic surgery.</p>
+      <p>His expertise in PJI was further enhanced by his <strong>British Hip Society Travelling Fellowship at the ENDO-Klinik Hamburg, Germany</strong> — one of the world's foremost centres for the treatment of infected joint replacements, where he trained under <strong>Professor Thorsten Gehrke and Professor Mustafa Citak</strong>.</p>
+    </div>
+    <div class="expertise-right">
+      <div class="exp-highlight">
+        <h3>High-Dependency Care Access</h3>
+        <p>Mr Hussain operates at hospitals with full HDU facilities, ensuring that patients undergoing complex, lengthy revision procedures receive the appropriate level of post-operative monitoring and critical care support when needed.</p>
+      </div>
+      <div class="exp-highlight">
+        <h3>Multidisciplinary Team Approach</h3>
+        <p>Every complex revision case is discussed within a structured MDT, bringing together orthopaedic surgeons, microbiologists, radiologists, physiotherapists, and specialist nurses to develop a tailored surgical plan.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════ TYPES OF REVISION ═══════════════ -->
+<section class="types-section fade-in">
+<div class="container">
+  <div class="slabel">Procedure Types</div>
+  <h2 class="stitle">Types of Revision Procedures</h2>
+  <p class="ssub">Mr Hussain offers the full range of revision procedures for both hip and knee joints, tailored to each patient's specific needs.</p>
+  <div class="types-grid">
+    <div class="type-card">
+      <span class="type-badge complex">Aseptic Revision</span>
+      <h3>Aseptic Loosening &amp; Wear</h3>
+      <p>When an implant loosens or wears out without infection, the failed components are removed and replaced in a single operation. Bone grafting or augmentation may be required to address any bone deficiency before the new implant is secured.</p>
+      <ul class="type-features">
+        <li>Single-stage procedure in most cases</li>
+        <li>Bone grafting for defects where needed</li>
+        <li>Specialist implants for significant bone loss</li>
+      </ul>
+    </div>
+    <div class="type-card">
+      <span class="type-badge infection">Infected Joint Replacement</span>
+      <h3>Two-Stage Revision for Infection</h3>
+      <p>Prosthetic joint infection typically requires a two-stage approach: in the first operation, the infected implant is removed and an antibiotic-loaded spacer is inserted. After a course of targeted antibiotics (usually 6–12 weeks), a second operation is performed to implant the new joint.</p>
+      <ul class="type-features">
+        <li>First stage: removal, debridement, antibiotic spacer</li>
+        <li>Targeted antibiotic therapy between stages</li>
+        <li>Second stage: new implant insertion</li>
+        <li>MDT collaboration with microbiology</li>
+      </ul>
+    </div>
+    <div class="type-card">
+      <span class="type-badge fracture">Peri-Prosthetic Fracture</span>
+      <h3>Fracture Around an Implant</h3>
+      <p>A fracture near an existing joint replacement may require fixation of the bone, revision of the implant, or both. The approach depends on whether the implant remains well-fixed or has loosened as a result of the fracture.</p>
+      <ul class="type-features">
+        <li>Plate and cable fixation for stable implants</li>
+        <li>Implant revision if loosened by fracture</li>
+        <li>Long-stem revision components when needed</li>
+      </ul>
+    </div>
+    <div class="type-card">
+      <span class="type-badge reconstruction">Complex Reconstruction</span>
+      <h3>Mega-Prosthesis &amp; Custom Implants</h3>
+      <p>In cases of massive bone loss — whether from multiple previous surgeries, infection, or tumour — Mr Hussain has extensive experience using mega-prostheses for segmental replacement of the femur, as well as custom-made implants designed to reconstruct severely deficient joints.</p>
+      <ul class="type-features">
+        <li>Segmental femoral replacement</li>
+        <li>Custom 3D-printed implants</li>
+        <li>Augments, cones, and sleeves for bone defects</li>
+        <li>Acetabular reconstruction with cages and rings</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════ THE REVISION JOURNEY ═══════════════ -->
+<section class="journey-section fade-in">
+<div class="container">
+  <div class="slabel">What to Expect</div>
+  <h2 class="stitle">The Revision Journey</h2>
+  <p class="ssub">Revision surgery requires careful planning and a personalised approach. Here is what you can expect at each stage.</p>
+  <div class="journey-timeline">
+    <div class="journey-step">
+      <div class="journey-dot step1">1</div>
+      <div class="journey-content">
+        <h3>Initial Consultation &amp; Investigation</h3>
+        <p>Your journey begins with a thorough consultation, including a detailed history and examination. Mr Hussain will review your previous surgical records and arrange advanced imaging (X-rays, CT scans, MRI) and blood tests to identify the cause of implant failure and assess bone stock. If infection is suspected, aspiration of the joint fluid may be performed for microbiological analysis.</p>
+      </div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-dot step2">2</div>
+      <div class="journey-content">
+        <h3>MDT Discussion &amp; Surgical Planning</h3>
+        <p>Complex cases are discussed within a multidisciplinary team (MDT) meeting, involving orthopaedic surgeons, microbiologists, radiologists, and specialist nurses. A detailed surgical plan is developed, including implant selection, the need for bone graft or augmentation, and whether a single-stage or staged approach is appropriate.</p>
+      </div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-dot step3">3</div>
+      <div class="journey-content">
+        <h3>Surgery</h3>
+        <p>Revision surgery is typically longer than primary joint replacement, often taking 2–4 hours depending on complexity. It is performed under general or spinal anaesthesia. The failed implant is carefully removed, bone is prepared — with grafting or augmentation if needed — and new components are implanted. Patients requiring complex reconstruction may be transferred to the high-dependency unit for close monitoring after surgery.</p>
+      </div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-dot step4">4</div>
+      <div class="journey-content">
+        <h3>Post-Operative Care &amp; Rehabilitation</h3>
+        <p>Most patients stay in hospital for 3–7 days following revision surgery, depending on the complexity of the procedure. Physiotherapy begins the day after surgery to restore mobility and strength. A structured rehabilitation programme is tailored to your specific procedure and recovery needs.</p>
+      </div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-dot step5">5</div>
+      <div class="journey-content">
+        <h3>Follow-Up &amp; Long-Term Monitoring</h3>
+        <p>Regular follow-up appointments are scheduled at 6 weeks, 3 months, 6 months, and annually thereafter. X-rays are taken to monitor the implant and bone healing. Mr Hussain's team provides ongoing support to ensure the best long-term outcome.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════ RECOVERY TIMELINE ═══════════════ -->
+<section class="recovery-section fade-in">
+<div class="container">
+  <div class="slabel">Recovery Milestones</div>
+  <h2 class="stitle">Recovery After Revision Surgery</h2>
+  <p class="ssub">Recovery from revision surgery is typically longer than after a first-time replacement. Every patient's journey is different, but here is a general guide.</p>
+  <div class="recovery-track">
+    <div class="recovery-node">
+      <div class="recovery-circle wk0">Day 1</div>
+      <h4>Early Mobilisation</h4>
+      <p>Physiotherapy begins. Standing and walking with support (frame or crutches).</p>
+    </div>
+    <div class="recovery-node">
+      <div class="recovery-circle wk2">2 Wks</div>
+      <h4>Wound Review</h4>
+      <p>Sutures/staples removed. Gentle exercises at home. Walking with crutches.</p>
+    </div>
+    <div class="recovery-node">
+      <div class="recovery-circle wk6">6 Wks</div>
+      <h4>Clinic Review</h4>
+      <p>X-ray review. Gradually reducing crutch use. Increasing activity levels.</p>
+    </div>
+    <div class="recovery-node">
+      <div class="recovery-circle wk12">3 Mths</div>
+      <h4>Progressing Well</h4>
+      <p>Most patients walking independently. Returning to daily activities and light duties.</p>
+    </div>
+    <div class="recovery-node">
+      <div class="recovery-circle wk24">6–12 Mths</div>
+      <h4>Full Recovery</h4>
+      <p>Maximum improvement expected. Ongoing follow-up to monitor implant performance.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════ PATIENT STORY ═══════════════ -->
+<section class="patient-story fade-in">
+<div class="container">
+  <div class="slabel">Patient Experience</div>
+  <h2 class="stitle">Patient Story</h2>
+  <div class="story-card">
+    <div class="story-placeholder">
+      <div class="story-placeholder-icon">📷</div>
+      <div class="story-placeholder-text">Patient story image<br>or video placeholder</div>
+    </div>
+    <div class="story-content">
+      <h3>A Revision Surgery Journey</h3>
+      <p>This space is reserved for a patient story — a real account from a patient who has undergone revision joint replacement surgery with Mr Hussain. Patient stories help others understand what to expect and provide reassurance during what can be an anxious time.</p>
+      <p>If you would like to share your experience of revision surgery to help other patients, please speak to Mr Hussain's team.</p>
+      <a href="#" class="story-link">Read the full story →</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════ TESTIMONIAL ═══════════════ -->
+<section class="testimonial-section fade-in">
+<div class="container">
+  <div style="text-align:center">
+    <div class="slabel">Patient Stories</div>
+    <h2 class="stitle" style="color:#f0efeb">What Patients Say</h2>
+  </div>
+  <div class="test-card">
+    <div class="test-stars">★★★★★</div>
+    <div class="test-tag">Revision Hip Surgery</div>
+    <p class="test-text">"I would recommend Mr Hussain 100% — he is utterly professional and an excellent surgeon. He is a very good listener and explains procedures very well. Mr Hussain performed a very successful 2-in-1 revision surgery."</p>
+    <div class="test-author">Verified Patient</div>
+    <div class="test-src">via Doctify</div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════ MDT & HDU ═══════════════ -->
+<section class="mdt-section fade-in">
+<div class="container">
+  <div class="slabel">Comprehensive Care</div>
+  <h2 class="stitle">Multidisciplinary Team &amp; Critical Care Support</h2>
+  <p class="ssub">Complex revision surgery demands more than surgical skill alone. Mr Hussain's practice is supported by the full resources of a specialist centre.</p>
+  <div class="mdt-grid">
+    <div class="mdt-card">
+      <div class="mdt-card-icon mdt">👥</div>
+      <h3>Multidisciplinary Team (MDT)</h3>
+      <p>Every complex revision case is discussed at a structured MDT meeting. This brings together consultant orthopaedic surgeons, consultant microbiologists, radiologists, specialist physiotherapists, occupational therapists, and dedicated arthroplasty nurses. The MDT ensures that the surgical plan, antibiotic strategy, rehabilitation, and post-operative care are fully coordinated for each patient.</p>
+    </div>
+    <div class="mdt-card">
+      <div class="mdt-card-icon hdu">🏥</div>
+      <h3>High-Dependency Unit (HDU) Access</h3>
+      <p>The hospitals where Mr Hussain operates have full high-dependency care facilities. For patients undergoing lengthy or complex revision procedures — particularly those with significant medical comorbidities — HDU admission provides enhanced post-operative monitoring, including closer observation of cardiovascular, respiratory, and renal function during the critical early recovery period.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section class="faq-section fade-in">
+<div class="container">
+  <div style="text-align:center">
+    <div class="slabel">Frequently Asked Questions</div>
+    <h2 class="stitle">Revision Surgery FAQs</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How long does revision surgery take?<span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Revision surgery is typically longer than a first-time joint replacement. Depending on the complexity — whether it involves bone grafting, infection management, or complex reconstruction — the procedure can take between 2 and 4 hours, and occasionally longer for the most complex cases.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How long will I stay in hospital?<span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Most patients stay for 3–7 days following revision surgery, though this can vary depending on the complexity of the procedure and your individual recovery. Patients who require high-dependency monitoring may stay slightly longer. Physiotherapy begins the day after surgery.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is revision surgery more risky than a first-time replacement?<span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Revision surgery does carry a higher risk of complications than primary joint replacement, including infection, dislocation, nerve or blood vessel injury, and the potential need for further surgery. However, in the hands of an experienced revision surgeon with access to specialist facilities and MDT support, these risks are carefully managed. Mr Hussain will discuss all risks and benefits thoroughly at your consultation.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is a two-stage revision for infection?<span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">When a joint replacement becomes infected, the most reliable treatment is a two-stage procedure. In the first stage, the infected implant is removed, the joint is thoroughly cleaned, and an antibiotic-loaded cement spacer is inserted. You then receive targeted antibiotics for 6–12 weeks. Blood tests confirm when the infection has been eradicated, and the second stage involves inserting a new joint replacement. Mr Hussain trained in this technique at the ENDO-Klinik Hamburg, a world-leading centre for managing prosthetic joint infections.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How long does recovery take after revision surgery?<span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Recovery from revision surgery is generally slower than after a primary replacement. Most patients use crutches for 6–12 weeks. Meaningful improvement is typically seen by 3 months, with maximum recovery reached at 6–12 months. Your rehabilitation programme will be tailored to your specific procedure and progress.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Will I get as good a result as my original replacement?<span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Revision surgery aims to relieve pain, restore stability, and improve function. While many patients achieve excellent results, the outcomes of revision surgery can be less predictable than a first-time replacement — particularly in cases with significant bone loss or multiple previous operations. Mr Hussain will give you an honest and realistic assessment of what to expect at your consultation.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I be referred from another hospital for revision surgery?<span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Yes. Mr Hussain regularly accepts referrals from other hospitals and surgeons for complex revision cases. The Royal Orthopaedic Hospital is a specialist tertiary referral centre, and patients are frequently referred from across the region and beyond. You can be referred by your GP, your current surgeon, or self-refer as a private patient.</div></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Which insurers cover revision surgery?<span class="arrow">▼</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Mr Hussain is recognised by all major private medical insurers including BUPA, AXA PPP, Vitality, WPA, Aviva, and Cigna. Revision joint replacement is typically covered under orthopaedic surgery benefits. It is advisable to contact your insurer before your consultation to confirm your specific cover and any pre-authorisation requirements.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section class="cta-section" id="book">
+<div class="container">
+  <div class="slabel">Get in Touch</div>
+  <h2 class="stitle" style="color:#f0efeb">Book a Revision Surgery Consultation</h2>
+  <p class="ssub">If you are experiencing problems with a previous hip or knee replacement, Mr Hussain and his team can help. Contact us to arrange a specialist consultation.</p>
+  <div class="cta-buttons">
+    <a href="tel:+447772782462" class="cta-btn primary">📞 Call: 07772 782462</a>
+    <a href="mailto:shakirhussain@nhs.net" class="cta-btn secondary">✉ Email Mr Hussain's Team</a>
+  </div>
+  <div class="cta-contact">
+    <a href="https://wa.me/447772782462">💬 WhatsApp</a>
+    <a href="https://www.doctify.com/uk/specialist/shakir-hussain#reviews">⭐ View Doctify Reviews</a>
+    <a href="https://roh.nhs.uk/our-team/hip/shakir-hussain">🏥 ROH Profile</a>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+<div class="container">
+  <p>© 2026 Mr Shakir Hussain · MBBS, MRCS, FRCSEd (Tr &amp; Orth) · Consultant Orthopaedic Surgeon · The Royal Orthopaedic Hospital Birmingham<br>
+  All Rights Reserved. &nbsp;|&nbsp; ICO Registration: ZB562385 &nbsp;|&nbsp; GMC Registered</p>
+</div>
+</footer>
+
+<script>
+// FAQ accordion
+function toggleFaq(el){
+  const item=el.closest('.faq-item');
+  const wasActive=item.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));
+  if(!wasActive)item.classList.add('active');
+}
+// Nav scroll effect
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
+});
+// Scroll reveal
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
