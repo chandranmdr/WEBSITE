@@ -37,8 +37,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.2
 .dropdown-menu li a:hover{background:#f0efeb;color:#c5a44e}
 .nav-cta{padding:10px 24px;background:linear-gradient(135deg,#c5a44e,#b8943f);color:#fff;border-radius:6px;font-weight:600;font-size:.85rem}
 .nav-cta:hover{background:linear-gradient(135deg,#d4b35e,#c5a44e)}
-.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
-.nav-mobile svg{stroke:var(--navy)}
+.mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
 .mobile-toggle span{display:block;width:24px;height:2px;background:#0c1f3f;margin:5px 0;transition:.3s}
 .nav-links.show{display:flex;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:#fff;padding:20px 24px 28px;gap:16px;border-bottom:1px solid #e2e0db;z-index:999;box-shadow:0 8px 24px rgba(0,0,0,.08)}
 .nav-links.show .dropdown-menu{display:block;position:static;box-shadow:none;border:none;padding:8px 0 0 16px}
@@ -232,7 +231,7 @@ section{padding:84px 0}
 }
 @media(max-width:768px){
 .nav-links{display:none}
-.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.mobile-toggle{display:block}
 .when-cards{grid-template-columns:1fr}
 .journey-timeline{flex-direction:column;gap:0}
 .journey-timeline::before{top:0;bottom:0;left:28px;right:auto;width:3px;height:auto}
@@ -879,25 +878,6 @@ document.querySelectorAll('.faq-q').forEach(q => {
   }, { passive: true });
   startAuto();
 })();
-
-// Hamburger ↔ X toggle
-document.getElementById('mobileToggle').addEventListener('click',function(){
-const isOpen = document.getElementById('navLinks').classList.toggle('show');
-this.querySelector('.icon-menu').style.display = isOpen ? 'none' : 'block';
-this.querySelector('.icon-close').style.display = isOpen ? 'block' : 'none';
-this.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
-});
-
-// Procedures dropdown on mobile
-const dropdown = document.querySelector('.nav-dropdown > a');
-if(dropdown){
-dropdown.addEventListener('click',function(e){
-if(window.innerWidth<=768){
-e.preventDefault();
-this.parentElement.classList.toggle('open');
-}
-});
-}
 </script>
 </body>
 </html>
