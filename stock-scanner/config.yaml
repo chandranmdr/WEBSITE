@@ -1,0 +1,74 @@
+# End-of-day screener configuration.
+#
+# Every `condition` is a pandas expression evaluated against one row per stock
+# (its latest daily bar). Available columns:
+#   open high low close volume chg_pct gap_pct
+#   sma10 sma20 sma50 sma200 ema21 sma200_slope dist_sma20 dist_sma50 dist_sma200
+#   rsi2 rsi14 atr14 atr_pct
+#   avg_vol50 rvol dollar_vol20
+#   high20 low20 (prior 20 days, excluding today) high10 low10 (last 10 days, including today)
+#   high252 low252 pct_from_high252 low2
+#   ret5 ret21 ret63 ret126 ret252 rs_rank (1-99, vs the rest of the universe)
+#   close_pos (0 = closed at the day's low, 1 = at the high) nr7 inside_day range10_vs_50
+#
+# `trigger` and `stop` are expressions too. They become the levels the
+# intraday scanner watches tomorrow: a cross above `trigger` is the entry
+# alert, and `stop` is where the idea is wrong.
+
+universe: [sp500, nasdaq100]
+
+# Applied before any setup: liquid stocks only.
+base_filter: close >= 10 and dollar_vol20 >= 25e6
+
+setups:
+  trend_pullback:
+    description: Uptrend (above a rising 200-day MA) pulling back toward the 50-day MA on cooling momentum
+    condition: >
+      close > sma200 and sma50 > sma200 and sma200_slope > 0
+      and rsi14 < 45 and dist_sma50 > -3 and dist_sma50 < 3 and rs_rank >= 60
+    rank_by: rs_rank
+    ascending: false
+    trigger: high
+    stop: low2 - 0.1 * atr14
+    limit: 15
+
+  breakout_20d:
+    description: Fresh close above the prior 20-day high on heavy volume, closing near the day's high
+    condition: >
+      close > high20 and rvol >= 1.5 and close_pos >= 0.7
+      and close > sma50 and sma50 > sma200
+    rank_by: rvol
+    ascending: false
+    trigger: high
+    stop: close - 1.5 * atr14
+    limit: 15
+
+  near_high_tight:
+    description: Leader within 5% of its 52-week high with a tightening range (volatility contraction)
+    condition: >
+      pct_from_high252 >= -5 and range10_vs_50 <= 0.4
+      and close > sma50 and rs_rank >= 80
+    rank_by: rs_rank
+    ascending: false
+    trigger: high10
+    stop: low10
+    limit: 15
+
+  oversold_in_uptrend:
+    description: Short-term washout (RSI(2) < 10) in a stock still above a rising 200-day MA
+    condition: close > sma200 and sma200_slope > 0 and rsi2 < 10
+    rank_by: rsi2
+    ascending: true
+    trigger: high
+    stop: close - 2 * atr14
+    limit: 15
+
+  nr7_inside_leader:
+    description: Narrowest range in 7 days or an inside day, in a strong uptrend; a compression before expansion
+    condition: >
+      (nr7 or inside_day) and close > sma50 and sma50 > sma200 and rs_rank >= 70
+    rank_by: rs_rank
+    ascending: false
+    trigger: high
+    stop: low
+    limit: 15

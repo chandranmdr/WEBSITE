@@ -1,0 +1,6 @@
+pandas>=2.0
+numpy
+yfinance>=0.2.50
+requests
+lxml
+PyYAML
