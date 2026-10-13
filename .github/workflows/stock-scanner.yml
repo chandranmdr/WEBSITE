@@ -1,0 +1,107 @@
+# Runs the stock screener every evening and the intraday scanner every trading day,
+# on GitHub's servers. Alerts go to Telegram and/or email (set up in repo secrets; see
+# stock-scanner/README.md). Scheduled runs only fire from the default branch.
+#
+# All times are UTC, so they shift by an hour against New York when daylight saving changes:
+#   screen    21:35 UTC  = 17:35 EDT / 16:35 EST (after the close)
+#   scan-am   13:20 UTC  = 09:20 EDT / 08:20 EST (waits for the 9:30 open), hands over at 18:58 UTC
+#   scan-pm   18:50 UTC  = picks up from 18:58 UTC and runs to the 16:00 ET close
+# (GitHub caps a job at 6 hours and the session is 6.5, hence two scanner jobs.)
+name: Stock scanner
+
+on:
+  schedule:
+    - cron: "35 21 * * 1-5"
+    - cron: "20 13 * * 1-5"
+    - cron: "50 18 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      task:
+        description: What to run
+        type: choice
+        options: [screen, scan-once]
+        default: screen
+
+concurrency:
+  group: stock-scanner-${{ github.event.schedule || inputs.task }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  ALERTS: ${{ vars.ALERT_CHANNELS || 'telegram' }}
+  TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  SMTP_HOST: ${{ secrets.SMTP_HOST }}
+  SMTP_PORT: ${{ secrets.SMTP_PORT }}
+  SMTP_USER: ${{ secrets.SMTP_USER }}
+  SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+  ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+
+defaults:
+  run:
+    working-directory: stock-scanner
+
+jobs:
+  screen:
+    if: github.event.schedule == '35 21 * * 1-5' || inputs.task == 'screen'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: stock-scanner/requirements.txt
+      - run: pip install -r requirements.txt
+      # stdout is discarded because logs of a public repo are public; the summary goes to $ALERTS.
+      - run: python run_screener.py --alerts "$ALERTS" > /dev/null
+      - name: Save watchlist for tomorrow's scanner
+        uses: actions/cache/save@v4
+        with:
+          path: stock-scanner/output/latest
+          key: watchlist-${{ github.run_id }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: screen-report
+          path: stock-scanner/output/latest
+          retention-days: 14
+
+  scan:
+    if: github.event.schedule == '20 13 * * 1-5' || github.event.schedule == '50 18 * * 1-5' || inputs.task == 'scan-once'
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: stock-scanner/requirements.txt
+      - run: pip install -r requirements.txt
+      - name: Restore the latest watchlist
+        id: wl
+        uses: actions/cache/restore@v4
+        with:
+          path: stock-scanner/output/latest
+          key: watchlist-none
+          restore-keys: watchlist-
+      - name: No saved watchlist yet, so screen now
+        if: steps.wl.outputs.cache-matched-key == ''
+        run: python run_screener.py > /dev/null
+      - name: Scan
+        run: |
+          case "${{ github.event.schedule }}" in
+            "20 13 * * 1-5") python run_scanner.py --alerts "$ALERTS" --stop-at 18:58 ;;
+            "50 18 * * 1-5") python run_scanner.py --alerts "$ALERTS" --resume-from 18:58 ;;
+            *)               python run_scanner.py --alerts "$ALERTS" --once ;;
+          esac
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: scanner-${{ github.run_id }}
+          path: stock-scanner/output/latest/scanner.html
+          retention-days: 7
+          if-no-files-found: ignore

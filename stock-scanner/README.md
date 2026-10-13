@@ -2,8 +2,10 @@
 
 A two-stage workflow for the **S&P 500 + Nasdaq-100** (about 520 stocks):
 
-1. **Screener (end of day, built).** It runs after the US close, filters the universe through a set of technical setups, and writes a watchlist with an entry **trigger** and a **stop** for each stock.
-2. **Scanner (intraday, next step).** It watches only that watchlist during the next session and alerts when price crosses a trigger.
+1. **Screener (end of day).** `run_screener.py` runs after the US close, filters the universe through a set of technical setups, and writes a watchlist with an entry **trigger** and a **stop** for each stock.
+2. **Scanner (intraday).** `run_scanner.py` watches only that watchlist during the next session and alerts on each step: near the trigger, triggered, target hit, or stopped out.
+
+Both can run [automatically on GitHub](#running-it-automatically-no-laptop-needed), so you get alerts on your phone without a computer switched on.
 
 ## Quick start
 
@@ -65,15 +67,71 @@ Each condition is a plain pandas expression, so you can add or change a setup wi
 
 The full list of columns you can use is at the top of `config.yaml`.
 
-## Running it every evening
+## Intraday scanner
 
-On Mac or Linux, add a cron job with `crontab -e`. This one runs at 22:15 UK time, Monday to Friday:
+```bash
+python run_scanner.py --demo      # replays a simulated session in a few seconds
+python run_scanner.py             # live: start any time before or during the session
+open output/latest/scanner.html   # dashboard, refreshes itself every minute
+```
+
+The scanner fetches 1-minute bars for the watchlist every 60 seconds and replays the whole day each time. That means a quick spike through the trigger between two checks is still caught, and it can tell whether the stop was hit before or after the entry.
+
+| Alert | When |
+|---|---|
+| 👀 Near | Price is within 0.5% below the trigger |
+| 🔔 Triggered | Price trades through the trigger. The alert shows the entry, stop, a 2R target and the time-of-day-adjusted relative volume, and flags *weak volume* or *below VWAP* |
+| 🎯 Target | Price reaches entry + 2 × risk |
+| 🛑 Stopped | Price hits the stop after the entry |
+| ⏫ Gapped | The stock opened more than 1% above the trigger, so it isn't chased |
+| ✖️ Invalidated | Price traded below the stop before triggering, so the setup is off for the day |
+
+Each alert fires once per setup per day. You can tune the thresholds and choose alert channels in the `scanner:` section of `config.yaml`.
+
+### Alert channels
+
+`console` and `logfile` work with no setup. `desktop` shows a Mac or Linux pop-up. For your phone:
+
+**Telegram** (recommended: free, instant, works anywhere)
+1. In Telegram, message **@BotFather**, send `/newbot`, and copy the token it gives you.
+2. Send any message to your new bot, then open `https://api.telegram.org/bot<TOKEN>/getUpdates` in a browser and copy `"chat":{"id": ...}`.
+3. Put both in `.env` (copy `.env.example`) to run locally, or into GitHub secrets (see below).
+
+**Email:** fill in the `SMTP_*` values in `.env`. For Gmail, use an [App Password](https://myaccount.google.com/apppasswords).
+
+Then run `python run_scanner.py --alerts telegram,desktop`, or set `alerts:` in `config.yaml`.
+
+## Running it automatically (no laptop needed)
+
+`.github/workflows/stock-scanner.yml` runs everything on GitHub's servers. It is free for this public repo.
+
+| Job | When (UTC = UK winter time; add 1h for UK summer time) | What |
+|---|---|---|
+| screen | 21:35, Mon–Fri | Runs the screener, sends tonight's watchlist to Telegram, and saves it for tomorrow |
+| scan (am) | 13:20 → 18:58 | Waits for the open, then scans every minute |
+| scan (pm) | 18:50 → close | Takes over from the morning job with no gaps or repeat alerts |
+
+GitHub stops any single job after 6 hours, and the session lasts 6.5, so the scanner runs as two jobs.
+
+**One-time setup**
+
+1. Merge this branch into `main`. GitHub only runs scheduled workflows from the default branch.
+2. Go to **Settings → Secrets and variables → Actions** and add the secrets `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`, plus the `SMTP_*` and `ALERT_EMAIL_TO` values if you want email.
+3. Optional: on the *Variables* tab, set `ALERT_CHANNELS` to `telegram,email`. The default is `telegram`.
+4. Go to **Actions → Stock scanner → Run workflow → screen** to test it now. You should get a Telegram message within a couple of minutes.
+
+The HTML report and the scanner dashboard are attached to each run under *Artifacts*.
+
+Because the repo is public, anyone can read the Actions logs, so the workflow never prints watchlists or alerts to them. They only go to your private channels. Secrets are never shown in logs.
+
+**Caveats:** GitHub's scheduled runs can start 5–15 minutes late at busy times. Yahoo Finance sometimes rate-limits cloud servers. If either becomes a problem, a $5/month server (Hetzner, DigitalOcean) or a Raspberry Pi at home can run the same two commands from cron:
 
 ```
-15 22 * * 1-5 cd /path/to/stock-scanner && .venv/bin/python run_screener.py >> screener.log 2>&1
+35 22 * * 1-5  cd ~/stock-scanner && .venv/bin/python run_screener.py --alerts telegram
+25 14 * * 1-5  cd ~/stock-scanner && .venv/bin/python run_scanner.py --alerts telegram
 ```
 
-On Windows, use Task Scheduler to run `.venv\Scripts\python.exe run_screener.py`.
+The cron times are in the server's local time; set it to Europe/London.
 
 ## Tests
 
@@ -89,7 +147,8 @@ pip install pytest && python -m pytest tests
 ## Roadmap
 
 - [x] End-of-day screener with configurable setups, watchlist, and HTML report
-- [ ] Intraday scanner: poll or stream quotes for `watchlist.json` and alert on trigger crosses with relative volume (email, Telegram, or IBKR price alerts)
+- [x] Intraday scanner with Telegram, email and desktop alerts, plus a live dashboard
+- [x] Runs automatically on GitHub Actions
 - [ ] Market-regime filter (for example, only take long setups when SPY is above its 50-day MA)
 - [ ] Backtest each setup on history to see which ones actually have an edge
 - [ ] Publish `report.html` to the website

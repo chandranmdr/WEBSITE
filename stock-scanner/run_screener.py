@@ -13,6 +13,7 @@ from pathlib import Path
 
 from screener.data import demo_daily, download_daily
 from screener.indicators import snapshot
+from screener.notify import Notifier, load_dotenv
 from screener.report import write_outputs
 from screener.rules import load_config, run_setups
 from screener.universe import load_universe
@@ -28,6 +29,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--offline", action="store_true", help="use the bundled index lists instead of fetching them")
     p.add_argument("--no-cache", action="store_true", help="re-download prices even if cached today")
     p.add_argument("--symbols", help="comma-separated tickers to screen instead of the indexes")
+    p.add_argument("--alerts", help="also send a summary to these channels (telegram,email,...)")
     p.add_argument("-v", "--verbose", action="store_true")
     args = p.parse_args(argv)
 
@@ -61,6 +63,14 @@ def main(argv: list[str] | None = None) -> int:
         names = ", ".join(g["symbol"].head(10)) + (" ..." if len(g) > 10 else "")
         print(f"  {s.name:<22} {len(g):>3}  {names}")
     print(f"\nWatchlist: {hits['symbol'].nunique()} unique symbols")
+    if args.alerts:
+        load_dotenv(HERE / ".env")
+        lines = [f"📋 Screen for {as_of}: {hits['symbol'].nunique()} stocks to watch"]
+        for s in config.setups:
+            g = hits[hits["setup"] == s.name]
+            if len(g):
+                lines.append(f"{s.name.replace('_', ' ')}: " + ", ".join(g["symbol"].head(8)) + (" …" if len(g) > 8 else ""))
+        Notifier([c.strip() for c in args.alerts.split(",")], out / "alerts.log").send(f"Screen {as_of}", "\n".join(lines))
     print(f"Report:    {out / 'report.html'}")
     return 0
 

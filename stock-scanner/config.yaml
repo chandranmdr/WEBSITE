@@ -72,3 +72,14 @@ setups:
     trigger: high
     stop: low
     limit: 15
+
+# Intraday scanner (run_scanner.py): watches output/latest/watchlist.json.
+scanner:
+  poll_seconds: 60
+  near_pct: 0.5        # "near" heads-up when price is within 0.5% below the trigger
+  max_gap_pct: 1.0     # opened more than 1% above the trigger: don't chase
+  target_r: 2.0        # target = entry + 2 x risk
+  min_rvol: 1.0        # flag triggers on below-normal volume (time-of-day adjusted)
+  # Channels: console, logfile, desktop, telegram, email. Telegram/email need
+  # environment variables (or a .env file); see README.
+  alerts: [console, logfile]
